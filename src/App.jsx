@@ -48,28 +48,29 @@ function App() {
   };
 
   return (
-    <div className="min-h-screen w-screen bg-gradient-to-tr from-teal-100 via-cyan-100 to-purple-200 flex flex-col">
-      <h1 className="text-5xl font-extrabold mt-12 mb-8 text-center bg-gradient-to-r from-purple-600 via-pink-500 to-red-500 bg-clip-text text-transparent drop-shadow-xl">
-        Task Manager Pro
-      </h1>
-      <div className="flex-1 w-full bg-white rounded-none shadow-none p-8">
-        <section className="mb-12 p-8 rounded-2xl shadow-lg border border-cyan-300 hover:shadow-xl transition-shadow duration-300">
+    <div className="min-h-screen w-full bg-gray-50 flex justify-center items-start py-12 px-4">
+      <div className="bg-white p-8 rounded-xl shadow-clean max-w-3xl w-full">
+        <h1 className="text-4xl font-extrabold text-primary mb-8 text-center">
+          Task Manager Pro
+        </h1>
+
+        <section className="mb-12">
           <TaskForm onTaskAdded={addTask} />
         </section>
 
-        <section className="mb-12 p-8 rounded-2xl shadow-lg border border-cyan-300 hover:shadow-xl transition-shadow duration-300">
+        <section className="mb-12">
           <TaskList tasks={tasks} onSelectTask={setSelectedTask} />
         </section>
 
         {selectedTask && (
-          <section className="p-10 rounded-3xl shadow-lg border border-purple-400">
-            <div className="flex justify-between items-center mb-8 border-b border-purple-300 pb-6">
-              <h2 className="text-3xl font-bold text-purple-800 tracking-wide">
-                Comments for: <span className="text-cyan-600">{selectedTask.title}</span>
+          <section className="p-8 rounded-xl shadow-inner border border-gray-300">
+            <div className="flex justify-between items-center mb-8 border-b border-gray-300 pb-4">
+              <h2 className="text-3xl font-semibold text-gray-800 tracking-wide">
+                Comments for: <span className="text-primary">{selectedTask.title}</span>
               </h2>
               <button
                 onClick={deleteTask}
-                className="bg-gradient-to-r from-red-500 via-red-600 to-red-700 text-white font-semibold py-3 px-8 rounded-lg shadow-md hover:from-red-600 hover:via-red-700 hover:to-red-800 transition-colors duration-300 active:scale-95"
+                className="bg-red-600 hover:bg-red-700 text-white font-semibold py-2 px-6 rounded-xl shadow transition"
                 title="Delete Task"
               >
                 Delete Task
@@ -78,7 +79,7 @@ function App() {
 
             <CommentForm taskId={selectedTask.id} onSaved={refreshCommentList} />
 
-            <div className="mt-10">
+            <div className="mt-8">
               <CommentList
                 taskId={selectedTask.id}
                 refresh={refreshComments}
